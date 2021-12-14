@@ -14,7 +14,6 @@ Aplikasi Bidan Praktek Mandiri (BPM)
   - Queue
   - Medical Record
   - Medical Patient: General, Pregnant, Baby, Family Planning (Keluarga Berencana)
-  - Bridging with BPJS
 
 ## Footnotes 🐾
 
