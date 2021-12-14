@@ -1,9 +1,14 @@
 # e-bpm
+
 Aplikasi Bidan Praktek Mandiri (BPM)
 
 ## Stacks 📚
 
-  - React ⚛️
-  - Go 🚶🏼‍♂️
-  - Graphql
-  - Postgres
+  - `Gatsby` a ReactJS framework ⚛️
+  - `Go` 🚶🏼‍♂️
+  - `Graphql`
+  - `Postgres`
+
+## Footnotes 🐾
+
+Please give this repo a star if you like it! ⭐️
