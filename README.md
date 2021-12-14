@@ -1,4 +1,4 @@
-# e-bpm
+# e-bpm 🤰
 
 Aplikasi Bidan Praktek Mandiri (BPM)
 
@@ -8,6 +8,13 @@ Aplikasi Bidan Praktek Mandiri (BPM)
   - `Go` 🚶🏼‍♂️
   - `Graphql`
   - `Postgres`
+
+## Features 🧪
+
+  - Queue
+  - Medical Record
+  - Medical Patient: General, Pregnant, Baby, Family Planning (Keluarga Berencana)
+  - Bridging with BPJS
 
 ## Footnotes 🐾
 
