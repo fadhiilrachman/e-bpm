@@ -1,7 +1,7 @@
 # e-bpm
 Aplikasi Bidan Praktek Mandiri (BPM)
 
-Stacks 📚
+## Stacks 📚
 
   - React ⚛️
   - Go 🚶🏼‍♂️
