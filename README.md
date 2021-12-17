@@ -13,7 +13,7 @@ Aplikasi Bidan Praktek Mandiri (BPM)
 
   - Queue
   - Medical Record
-  - Medical Patient: General, Intra Natal Care (INC), Antenatal Care (ANC), Immunization, Family Planning (Keluarga Berencana)
+  - Medical Patient: General, Intranatal Care (INC), Antenatal Care (ANC), Immunization, Family Planning (Keluarga Berencana)
 
 ## Footnotes 🐾
 
