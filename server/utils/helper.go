@@ -89,3 +89,13 @@ func ParseToken(tokenString string) (*TokenData, error) {
 		panic(err)
 	}
 }
+
+// time
+
+func TimeNow() string {
+	loc, _ := time.LoadLocation("Asia/Jakarta")
+
+	t := time.Now().In(loc).Format("2006-01-02 15:04:05")
+
+	return t
+}

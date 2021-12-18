@@ -4,18 +4,16 @@ import (
     "log"
     "os"
 
-    "github.com/go-pg/pg/v10"
+    "github.com/go-pg/pg"
     "github.com/joho/godotenv"
+    controller "github.com/fadhiilrachman/e-bpm/controllers"
 )
 
 func Connection() *pg.DB {
-    // load env ( development )
-    if os.Getenv("APP_ENV") == "dev" {
-        err := godotenv.Load()
-
-        if err != nil {
-            panic(err)
-        }
+    // load env
+    err := godotenv.Load()
+    if err != nil {
+        panic(err)
     }
 
     // get envar
@@ -34,10 +32,11 @@ func Connection() *pg.DB {
     var db *pg.DB = pg.Connect(option)
 
     if db == nil {
-        log.Printf("DB not exist")
+        log.Printf("Database %s not exist", DB_NAME)
     }
 
-    log.Printf("db is connected")
+    log.Printf("Database %s is connected", DB_NAME)
+    controller.CreateUserTable(db)
 
     return db
 }

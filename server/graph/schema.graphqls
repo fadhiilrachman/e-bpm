@@ -10,7 +10,6 @@ type User {
   fullname: String!
   email: String!
   phone: String!
-  address: String!
   createdAt: String!
   updatedAt: String!
   lastLoginAt: String!
@@ -21,27 +20,33 @@ type TokenData {
   username: String!
 }
 
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
-}
-
-type User {
-  id: ID!
-  name: String!
-}
-
 type Query {
-  todos: [Todo!]!
+  parseTokenData: TokenData!
 }
 
-input NewTodo {
-  text: String!
-  userId: String!
+# mutations and input
+
+input NewUser {
+  role: String!
+  username: String!
+  password: String!
+  fullname: String!
+  phone: String!
+  email: String!
+}
+
+input LoginUser {
+  username: String!
+  password: String!
+}
+
+input RefreshTokenData {
+  token: String!
 }
 
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  createUser(input: NewUser!): User!
+  loginUser(input: LoginUser!): String!
+
+  refreshToken(input: RefreshTokenData!): String!
 }
