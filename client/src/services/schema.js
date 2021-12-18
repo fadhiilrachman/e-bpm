@@ -12,3 +12,12 @@ export const REFRESH_TOKEN = gql`
     }
 `;
 
+export const PARSE_TOKEN = gql`
+    query {
+        parseTokenData {
+            username
+            role
+        }
+    }
+`;
+

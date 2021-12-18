@@ -7,12 +7,38 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/google/uuid"
 	controller "github.com/fadhiilrachman/e-bpm/controllers"
 	"github.com/fadhiilrachman/e-bpm/graph/generated"
 	"github.com/fadhiilrachman/e-bpm/graph/model"
-	utils "github.com/fadhiilrachman/e-bpm/utils"
 	auth "github.com/fadhiilrachman/e-bpm/middleware"
+	"github.com/fadhiilrachman/e-bpm/utils"
 )
+
+func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
+	hashed, _ := utils.HashPassword(input.Password)
+
+	user := &model.User{
+		ID:          uuid.New().String(),
+		Username:    input.Username,
+		Password:    hashed,
+		Fullname:    input.Fullname,
+		Role:        input.Role,
+		Phone:       input.Phone,
+		Email:       input.Email,
+		CreatedAt:   utils.TimeNow(),
+		UpdatedAt:   utils.TimeNow(),
+		LastLoginAt: utils.TimeNow(),
+	}
+
+	err := controller.CreateNewUser(user)
+
+	if err != nil {
+		return &model.User{}, fmt.Errorf("User already exist")
+	}
+
+	return user, nil
+}
 
 func (r *mutationResolver) LoginUser(ctx context.Context, input model.LoginUser) (string, error) {
 	data, check := controller.AuthUser(input.Username, input.Password)
@@ -50,7 +76,7 @@ func (r *queryResolver) ParseTokenData(ctx context.Context) (*model.TokenData, e
 	}
 
 	data := &model.TokenData{
-		Role: user.Role,
+		Role:     user.Role,
 		Username: user.Username,
 	}
 
