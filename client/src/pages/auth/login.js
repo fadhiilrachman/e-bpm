@@ -3,6 +3,7 @@ import { navigate } from 'gatsby'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import AuthLoginForm from '../../components/auth/login'
+import SEO from '../../components/seo'
 
 import { ApolloProvider } from '@apollo/react-hooks'
 import client from '../../services/graphql'
@@ -19,6 +20,7 @@ export default () => {
 
     return (
         <ThemeProvider theme={theme}>
+            <SEO title="Login" />
             <ApolloProvider client={client}>
                 <AuthLoginForm />
             </ApolloProvider>

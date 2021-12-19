@@ -1,13 +1,15 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "e-bpm",
+    siteUrl: `http://localhost:8000`,
+    title: `e-bpm`,
+    description: `Aplikasi Bidan Praktek Mandiri`,
+    author: `Fadhiil Rachman`,
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        icon: "src/images/icon.png",
+        icon: `src/images/icon.png`,
       },
     },
   ],

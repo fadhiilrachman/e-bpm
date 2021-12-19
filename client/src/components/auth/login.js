@@ -8,18 +8,31 @@ import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import { useMutation } from '@apollo/client'
 import { LOGIN } from '../../services/schema'
 
 function Copyright(props) {
+    const { site } = useStaticQuery(
+        graphql`
+            query {
+                site {
+                    siteMetadata {
+                        title
+                    }
+                }
+            }
+        `
+    )
+
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Hak Cipta © '}
             <Link color="inherit" href="/">
-                e-bpm
+                {site.siteMetadata.title}
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -61,6 +74,7 @@ export default () => {
                 progress: undefined
             })
         } catch (error) {
+            pristineForm()
             toast.error(`${error.message}`, {
                 position: "top-right",
                 autoClose: 5000,

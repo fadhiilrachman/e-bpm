@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 const pageStyles = {
     color: '#232129',
