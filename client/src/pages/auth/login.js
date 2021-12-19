@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useEffect } from 'react'
+import { navigate } from 'gatsby'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-import AuthLoginForm from '../../components/auth/login';
+import AuthLoginForm from '../../components/auth/login'
 
-import { ApolloProvider } from '@apollo/react-hooks';
-import client from '../../services/graphql';
+import { ApolloProvider } from '@apollo/react-hooks'
+import client from '../../services/graphql'
 
-const theme = createTheme();
+const theme = createTheme()
 
 export default () => {
     useEffect(() => {
