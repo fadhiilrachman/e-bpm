@@ -17,30 +17,31 @@ type contextKey struct {
 
 func Auth() func(http.Handler) http.Handler {
     return func(next http.Handler) http.Handler {
-        return http.HandlerFunc(
-            func(w http.ResponseWriter, r *http.Request) {
-                reqToken := r.Header.Get("authorization")
-                
-                if reqToken == "" {
-                    next.ServeHTTP(w, r)
-                    return
-                }
-
-                splitToken := strings.Split(reqToken, "Bearer ")
-                tokenString := splitToken[1]
-                data, err := utils.ParseToken(tokenString)
-
-                if err != nil {
-                    http.Error(w, "Invalid token", http.StatusForbidden)
-                    return
-                }
-
-                user, _ := controller.IsUsernameExist(data.Username)
-
-                ctx := context.WithValue(r.Context(), userCtxKey, user)
-
-                r = r.WithContext(ctx)
+        return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+            reqToken := r.Header.Get("authorization")
+            
+            // allow for anonymous user
+            if reqToken == "" {
                 next.ServeHTTP(w, r)
+                return
+            }
+
+            // if login, validate token
+            splitToken := strings.Split(reqToken, "Bearer ")
+            tokenString := splitToken[1]
+            data, err := utils.ParseToken(tokenString)
+
+            if err != nil {
+                http.Error(w, "Invalid token", http.StatusForbidden)
+                return
+            }
+
+            user, _ := controller.IsUsernameExist(data.Username)
+
+            ctx := context.WithValue(r.Context(), userCtxKey, user)
+
+            r = r.WithContext(ctx)
+            next.ServeHTTP(w, r)
         })
     }
 }

@@ -54,7 +54,10 @@ func main() {
 
     router.Handle("/", playground.Handler("GraphQL playground", "/query"))
     router.Handle("/query", srv)
-
     log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-    log.Fatal(http.ListenAndServe(":"+port, nil))
+
+    err := http.ListenAndServe(":"+port, router)
+    if err != nil {
+        panic(err)
+    }
 }

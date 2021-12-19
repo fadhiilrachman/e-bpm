@@ -9,6 +9,10 @@ Aplikasi Bidan Praktek Mandiri (BPM)
   - `Graphql`
   - `Postgres`
 
+## API Collections
+
+Kindly visit this Postman collections [here](https://documenter.getpostman.com/view/16607319/UVRAJSJY).
+
 ## Features 🧪
 
   - Queue
