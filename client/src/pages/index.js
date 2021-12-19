@@ -16,11 +16,11 @@ const headingStyles = {
 
 const IndexPage = () => {
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token')
         if (!token) {
-            navigate('/auth/login');
+            navigate('/auth/login')
         }
-    }, []);
+    }, [])
     
     return (
         <main style={pageStyles}>

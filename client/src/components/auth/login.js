@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from 'react'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Link from '@mui/material/Link'
+import Box from '@mui/material/Box'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../services/schema';
+import { useMutation } from '@apollo/client'
+import { LOGIN } from '../../services/schema'
 
 function Copyright(props) {
     return (
@@ -24,14 +24,14 @@ function Copyright(props) {
             {new Date().getFullYear()}
             {'.'}
         </Typography>
-    );
+    )
 }
 
 export default () => {
     // login states
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [login] = useMutation(LOGIN);
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [login] = useMutation(LOGIN)
 
     const loginUser = async () => {
         try {
@@ -42,14 +42,14 @@ export default () => {
                         password,
                     },
                 },
-            });
+            })
 
             const {
                 data: { loginUser },
-            } = result;
+            } = result
 
-            localStorage.setItem('token', loginUser);
-            pristineForm();
+            localStorage.setItem('token', loginUser)
+            pristineForm()
 
             toast.success("Login success", {
                 position: "top-right",
@@ -59,7 +59,7 @@ export default () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined
-            });
+            })
         } catch (error) {
             toast.error(`${error.message}`, {
                 position: "top-right",
@@ -69,22 +69,22 @@ export default () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined
-            });
+            })
         }
     }
 
     const handleLogin = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        setUsername(data.get('username'));
-        setPassword(data.get('password'));
-        loginUser();
-    };
+        event.preventDefault()
+        const data = new FormData(event.currentTarget)
+        setUsername(data.get('username'))
+        setPassword(data.get('password'))
+        loginUser()
+    }
 
     const pristineForm = () => {
-        setUsername('');
-        setPassword('');
-    };
+        setUsername('')
+        setPassword('')
+    }
 
     return (
         <>
@@ -153,5 +153,5 @@ export default () => {
                 pauseOnHover
             />
         </>
-    );
+    )
 }

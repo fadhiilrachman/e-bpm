@@ -11,11 +11,11 @@ const theme = createTheme()
 
 export default () => {
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token')
         if (token) {
-            navigate('/');
+            navigate('/')
         }
-    }, []);
+    }, [])
 
     return (
         <ThemeProvider theme={theme}>
