@@ -11,7 +11,7 @@ import (
 	controller "github.com/fadhiilrachman/e-bpm/controllers"
 	"github.com/fadhiilrachman/e-bpm/graph/generated"
 	"github.com/fadhiilrachman/e-bpm/graph/model"
-	auth "github.com/fadhiilrachman/e-bpm/middleware"
+	middleware "github.com/fadhiilrachman/e-bpm/middleware"
 	"github.com/fadhiilrachman/e-bpm/utils"
 )
 
@@ -69,7 +69,7 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, input model.Refresh
 }
 
 func (r *queryResolver) ParseTokenData(ctx context.Context) (*model.TokenData, error) {
-	user, ok := auth.ForContext(ctx)
+	user, ok := middleware.ForContext(ctx)
 
 	if !ok {
 		return &model.TokenData{}, fmt.Errorf("Forbidden")

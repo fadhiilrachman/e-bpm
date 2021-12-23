@@ -11,7 +11,7 @@ import (
 	"github.com/fadhiilrachman/e-bpm/config"
 	"github.com/fadhiilrachman/e-bpm/graph"
 	"github.com/fadhiilrachman/e-bpm/graph/generated"
-	"github.com/fadhiilrachman/e-bpm/middleware"
+	middleware "github.com/fadhiilrachman/e-bpm/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/gorilla/websocket"
 	"github.com/rs/cors"

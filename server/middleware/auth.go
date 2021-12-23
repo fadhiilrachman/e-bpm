@@ -9,8 +9,8 @@ import (
     utils "github.com/fadhiilrachman/e-bpm/utils"
 )
 
-var userCtxKey = &contextKey{"admin", "username"}
-type contextKey struct {
+var userCtxKey = &ContextKey{"admin", "username"}
+type ContextKey struct {
     Role string
     Username string
 }
