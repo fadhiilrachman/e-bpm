@@ -37,6 +37,7 @@ func Connection() *pg.DB {
 
     log.Printf("Database %s is connected", DB_NAME)
     controller.CreateUserTable(db)
+    controller.InitiateDB(db)
 
     return db
 }

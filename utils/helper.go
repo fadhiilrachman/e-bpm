@@ -35,12 +35,10 @@ type TokenData struct {
 }
 
 func GetSecretKey() string {
-	if os.Getenv("APP_ENV") == "dev" {
-		err := godotenv.Load()
-		if err != nil {
-			panic(err)
-		}
-	}
+    err := godotenv.Load()
+    if err != nil {
+        panic(err)
+    }
 	JWT_SECRET := os.Getenv("JWT_SECRET")
 	
 	return JWT_SECRET

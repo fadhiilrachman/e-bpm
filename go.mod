@@ -11,14 +11,6 @@ require (
 	github.com/rs/cors v1.8.0
 	github.com/vektah/gqlparser/v2 v2.2.0
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3
-)
-
-require (
-	github.com/onsi/ginkgo v1.16.5 // indirect
-	github.com/onsi/gomega v1.17.0 // indirect
-)
-
-require (
 	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/go-pg/pg v8.0.7+incompatible
 	github.com/google/uuid v1.3.0
@@ -27,6 +19,5 @@ require (
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	golang.org/x/sys v0.0.0-20211214234402-4825e8c3871d // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	mellium.im/sasl v0.2.1 // indirect
 )

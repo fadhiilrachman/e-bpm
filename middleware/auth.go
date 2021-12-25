@@ -11,8 +11,8 @@ import (
 
 var userCtxKey = &ContextKey{"admin", "username"}
 type ContextKey struct {
-    role string
-    username string
+    Role string
+    Username string
 }
 
 func Auth() func(http.Handler) http.Handler {
