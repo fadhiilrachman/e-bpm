@@ -31,8 +31,8 @@ input NewUser {
   username: String!
   password: String!
   fullname: String!
-  phone: String!
   email: String!
+  phone: String!
 }
 
 input LoginUser {

@@ -12,8 +12,8 @@ type NewUser struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Fullname string `json:"fullname"`
-	Phone    string `json:"phone"`
 	Email    string `json:"email"`
+	Phone    string `json:"phone"`
 }
 
 type RefreshTokenData struct {

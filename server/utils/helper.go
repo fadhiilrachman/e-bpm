@@ -34,7 +34,7 @@ type TokenData struct {
 	Username	string `json:"username"`
 }
 
-func getSecretKey() string {
+func GetSecretKey() string {
 	if os.Getenv("APP_ENV") == "dev" {
 		err := godotenv.Load()
 		if err != nil {
@@ -42,11 +42,12 @@ func getSecretKey() string {
 		}
 	}
 	JWT_SECRET := os.Getenv("JWT_SECRET")
+	
 	return JWT_SECRET
 }
 
 func GenerateToken(role, username string) (string, error) {
-	keyString := getSecretKey()
+	keyString := GetSecretKey()
 	key := []byte(keyString)
 
 	token := jwt.New(jwt.SigningMethodHS256)
@@ -54,7 +55,7 @@ func GenerateToken(role, username string) (string, error) {
 
 	claims["username"] = username
 	claims["role"] = role
-	claims["exp"] = time.Now().Add(time.Hour * 24).Unix()
+	claims["expired_time"] = time.Now().Add(time.Hour * 24).Unix()
 
 	tokenString, err := token.SignedString(key)
 
@@ -66,7 +67,7 @@ func GenerateToken(role, username string) (string, error) {
 }
 
 func ParseToken(tokenString string) (*TokenData, error) {
-	keyString := getSecretKey()
+	keyString := GetSecretKey()
 	key := []byte(keyString)
 
 	token, err := jwt.Parse(
@@ -94,7 +95,6 @@ func ParseToken(tokenString string) (*TokenData, error) {
 
 func TimeNow() string {
 	loc, _ := time.LoadLocation("Asia/Jakarta")
-
 	t := time.Now().In(loc).Format("2006-01-02 15:04:05")
 
 	return t

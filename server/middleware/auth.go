@@ -11,23 +11,23 @@ import (
 
 var userCtxKey = &ContextKey{"admin", "username"}
 type ContextKey struct {
-    Role string
-    Username string
+    role string
+    username string
 }
 
 func Auth() func(http.Handler) http.Handler {
     return func(next http.Handler) http.Handler {
         return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-            reqToken := r.Header.Get("authorization")
+            token := r.Header.Get("authorization")
             
             // allow for anonymous user
-            if reqToken == "" {
+            if token == "" {
                 next.ServeHTTP(w, r)
                 return
             }
 
             // if login, validate token
-            splitToken := strings.Split(reqToken, "Bearer ")
+            splitToken := strings.Split(token, "Bearer ")
             tokenString := splitToken[1]
             data, err := utils.ParseToken(tokenString)
 
@@ -48,6 +48,5 @@ func Auth() func(http.Handler) http.Handler {
 
 func ForContext(ctx context.Context) (*controller.LoginData, bool) {
     data, ok := ctx.Value(userCtxKey).(*controller.LoginData)
-
     return data, ok
 }

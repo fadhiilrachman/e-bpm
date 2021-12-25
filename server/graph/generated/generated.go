@@ -320,8 +320,8 @@ input NewUser {
   username: String!
   password: String!
   fullname: String!
-  phone: String!
   email: String!
+  phone: String!
 }
 
 input LoginUser {
@@ -2291,19 +2291,19 @@ func (ec *executionContext) unmarshalInputNewUser(ctx context.Context, obj inter
 			if err != nil {
 				return it, err
 			}
-		case "phone":
-			var err error
-
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("phone"))
-			it.Phone, err = ec.unmarshalNString2string(ctx, v)
-			if err != nil {
-				return it, err
-			}
 		case "email":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("email"))
 			it.Email, err = ec.unmarshalNString2string(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "phone":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("phone"))
+			it.Phone, err = ec.unmarshalNString2string(ctx, v)
 			if err != nil {
 				return it, err
 			}

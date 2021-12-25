@@ -7,12 +7,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/google/uuid"
 	controller "github.com/fadhiilrachman/e-bpm/controllers"
 	"github.com/fadhiilrachman/e-bpm/graph/generated"
 	"github.com/fadhiilrachman/e-bpm/graph/model"
-	middleware "github.com/fadhiilrachman/e-bpm/middleware"
+	"github.com/fadhiilrachman/e-bpm/middleware"
 	"github.com/fadhiilrachman/e-bpm/utils"
+	"github.com/google/uuid"
 )
 
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
