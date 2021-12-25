@@ -1,18 +1,18 @@
 # ~/.tmuxinator.yml
 name: e-bpm
-root: ~/Workspace/go/e-bpm/
+root: ~/Workspace/e-bpm/
 
 windows:
   # client
   - client:
-      root: client
+      root: e-bpm-client
       layout: main-vertical
       panes:
         - develop: gatsby develop
   
   # server
   - server:
-      root: server
+      root: e-bpm
       layout: main-vertical
       panes:
         - develop: air
